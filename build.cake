@@ -3,16 +3,16 @@ var Configuration = Argument("configuration", "Release");
 Task("Restore")
     .Does(() =>
 {
-    DotnetCoreRestore();
+    DotNetCoreRestore();
 });
 Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
 {
-    //DotNetCoreBuild("./app/App/App.csproj", new DotnetCoreBuildSettings
-    //{
-        //Configuration = Configuration
-    //});
+    DotNetCoreBuild("ambconsole.csproj", new DotNetCoreBuildSettings
+    {
+        Configuration = Configuration
+    });
 });
 
 RunTarget(target);
